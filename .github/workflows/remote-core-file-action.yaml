@@ -1,0 +1,21 @@
+#
+#
+name: Remote Core Files Action Initiator
+
+on:
+  push:
+    branches: ['develop']
+
+jobs:
+  core-files:
+    strategy:
+      matrix:
+        repo: ['kloostermanw/repo-child']
+    runs-on: ubuntu-latest
+    steps:
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          repository: ${{ matrix.repo }}
+          event-type: core-files-event
