@@ -6,6 +6,8 @@ class Dog
     {
     }
 
-    public function test()
-    {}
+    public function test($variable)
+    {
+        return $variable;
+    }
 }
